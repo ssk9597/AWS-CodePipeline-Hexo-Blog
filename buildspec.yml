@@ -1,18 +1,17 @@
 version: 0.2
 
-# CodeBuild でのビルドの各段階で実行するコマンドを定義する
 phases:
-  # ビルド前に必要なパッケージのインストールを実行
-  pre_build:
+  install:
+    runtime-versions:
+      nodejs: 10
     commands:
+      - npm install -g hexo-cli
       - npm install
-      - npm install -g hexo
-  # 静的サイトとしてのビルドを実行
+
   build:
     commands:
       - hexo generate
-# デプロイする際に public フォルダ以下の内容を指定した S3 バ ケットにアップロードするように設定
 artifacts:
   files:
-    - ’**/*’
-  base-directory: ’public’
+    - '**/*'
+  base-directory: 'public'

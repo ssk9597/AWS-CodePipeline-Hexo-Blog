@@ -1,1 +1,1 @@
-## CodePipeline でお手軽ブログ運用
+## CodePipelineでブログ運用

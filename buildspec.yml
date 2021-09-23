@@ -1,16 +1,20 @@
 version: 0.2
 
+# CodeBuild でのビルドの各段階で実行するコマンドを定義
 phases:
+  # ビルド前に実行するコマンド
   install:
+    # どのランタイムを使用するか定義
     runtime-versions:
       nodejs: 12
     commands:
       - npm install -g hexo
       - npm install
-
+  # ビルド時に実行するコマンド
   build:
     commands:
       - hexo generate
+# 以下のフォルダをS3にアップロードする
 artifacts:
   files:
     - '**/*'
